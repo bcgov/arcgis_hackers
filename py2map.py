@@ -4,7 +4,10 @@ import json
 
 secrets = r"H:\secrets\maphub_config.json"
 
-def readConfig(configFile):#returns dictionary of parameters
+# this is one method to 
+def readConfig(configFile):
+    # returns list of parameters 
+    # with key 'name'
     """
     reads the config file to dictionary
     """
