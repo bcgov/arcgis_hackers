@@ -6,9 +6,10 @@ Make something to add
 
 ## making a virtual environment
 in cmd or powershell navigate to arcgis_hackers
-python -m venv venv
-venv\Scripts\activate.bat
-pip install arcgis
+
+* python -m venv venv
+* venv\Scripts\activate.bat
+* pip install arcgis
 
 
 ## Getting Help or Reporting an Issue
