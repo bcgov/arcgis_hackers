@@ -1,7 +1,7 @@
 from arcgis import gis
 import logging
 import json
-
+#carole was here
 secrets = r"H:\secrets\maphub_config.json"
 
 # this is one method to 
