@@ -1,0 +1,11 @@
+[
+    {
+    "name":"BC Maphub",
+    "params":
+        {
+            "mapurl":"https://governmentofbc.maps.arcgis.com",
+            "usr":"",
+            "password":""
+        }
+    }
+]
