@@ -7,7 +7,12 @@ import sys
 import logging
 import json
 
-secrets = r"H:\secrets\maphub_config.json"
+secrets = r"H:\secrets\maphub_config.json" # Holds Credentials
+
+list_by_owner = False
+list_by_group_of_interest = False
+
+grp_title = 'M-KMA 2019 PR Developer'
 
 # Makes a time stamp
 def makeTimeStamp():
@@ -48,13 +53,21 @@ for item in contents:
     items.append(item['id'])
 
 usr_groups = mh.groups.search(query="owner:{}".format(params['usr']))
-group_of_interest = mh.groups.search(query="title: " + '"M-KMA 2019 PR Developer"')
+group_of_interest = mh.groups.search(query='title: "{}"'.format(grp_title))
 
-for group in group_of_interest:
-    print("* {}".format(group.get_members()))
+list_by_owner = False
+list_by_group_of_interest = False
 
-for group in usr_groups:
-    print("** {}".format(group.get_members()))
+if list_by_owner == True:
+    for group in usr_groups:
+        print("* {}:\n   {}".format(group.title, group.get_members()))
+
+if list_by_group_of_interest == False:
+    for group in group_of_interest:
+        print("* {}:\n   {}".format(group.title, group.get_members()))
+
+# Find map extent:
+#for mh.contnet.search()
 
 
 
