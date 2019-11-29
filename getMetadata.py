@@ -38,8 +38,9 @@ def readConfig(configFile):
 
 
 ts = makeTimeStamp()
-print("Time Stamp: {}".format(ts))
+#print("Time Stamp: {}".format(ts))
 
+print("\n\n\n{}\n\n".format("*"*20))
 
 sites = readConfig(secrets)
 for site in sites:
@@ -62,12 +63,22 @@ if list_by_owner == True:
     for group in usr_groups:
         print("* {}:\n   {}".format(group.title, group.get_members()))
 
-if list_by_group_of_interest == False:
+if list_by_group_of_interest == True:
     for group in group_of_interest:
-        print("* {}:\n   {}".format(group.title, group.get_members()))
+        print("** {}:\n   {}".format(group.title, group.get_members()))
 
-# Find map extent:
-#for mh.contnet.search()
+# Find extent of web map
+items_of_interest = mh.content.search(query="owner:{}".format(params['usr']))
+for item in items_of_interest:
+    if item.type == "Web Map":
+        print(item.title)
+        print("   Extent: {}, {}:".format(item.extent[0], item.extent[1]))
+
+        
+    
+
+print("\n\n\n{}\n\n".format("*"*20))
+    
 
 
 
