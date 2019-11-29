@@ -67,14 +67,17 @@ if list_by_group_of_interest == True:
     for group in group_of_interest:
         print("** {}:\n   {}".format(group.title, group.get_members()))
 
-# Find extent of web map
+# Find extent of web map and update extent
 items_of_interest = mh.content.search(query="owner:{}".format(params['usr']))
 for item in items_of_interest:
     if item.type == "Web Map":
         print(item.title)
+        print("   {}".format(item.id))
         print("   Extent: {}, {}:".format(item.extent[0], item.extent[1]))
-
-        
+        new_extent = [  [item.extent[0][0]+10, item.extent[0][1]+10],
+                        [item.extent[1][0]+10, item.extent[1][1]+10] 
+                     ]
+        print("   Extent: {}, {}:".format(new_extent[0], new_extent[1]))
     
 
 print("\n\n\n{}\n\n".format("*"*20))
