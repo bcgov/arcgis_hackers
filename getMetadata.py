@@ -12,13 +12,17 @@ secrets = r"H:\secrets\maphub_config.json" # Holds Credentials
 list_by_owner = False
 list_by_group_of_interest = False
 
-grp_title = 'M-KMA 2019 PR Developer'
+#grp_title = 'M-KMA 2019 PR Developer'
+grp_title = 'Omineca ESI - Developer'
 
-# Makes a time stamp
+
 def makeTimeStamp():
+    """
+    Creates a time stamp in a particular format
+    """
     return datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
-# this is one method to 
+
 def readConfig(configFile):
     # returns list of parameters 
     # with key 'name'
@@ -36,6 +40,7 @@ def readConfig(configFile):
             return d
     logging.debug("Config Loaded")
 
+#______________________________________________________________________#
 
 ts = makeTimeStamp()
 #print("Time Stamp: {}".format(ts))
@@ -48,6 +53,7 @@ for site in sites:
         params = site['params']
 mh = gis.GIS(params['mapurl'],params['usr'],params['password'])
 contents = mh.content.search(query="owner:{}".format(params['usr']))
+
 items = []
 for item in contents:
     #print (f"Name:{item['name']} Id: {item['id']}")
@@ -57,7 +63,7 @@ usr_groups = mh.groups.search(query="owner:{}".format(params['usr']))
 group_of_interest = mh.groups.search(query='title: "{}"'.format(grp_title))
 
 list_by_owner = False
-list_by_group_of_interest = False
+list_by_group_of_interest = True
 
 if list_by_owner == True:
     for group in usr_groups:
@@ -80,7 +86,7 @@ for item in items_of_interest:
         print("   Extent: {}, {}:".format(new_extent[0], new_extent[1]))
     
 
-print("\n\n\n{}\n\n".format("*"*20))
+print("\n\n\n{}\nDone...\n\n".format("*"*20))
     
 
 
